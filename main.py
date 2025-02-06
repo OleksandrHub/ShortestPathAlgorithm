@@ -1,8 +1,19 @@
-copper = {
-    'species': 'guinea pig',
-    'age': 2
+my_graph = {
+    'A': [('B', 3), ('D', 1)],
+    'B': [('A', 3), ('C', 4)],
+    'C': [('B', 4), ('D', 7)],
+    'D': [('A', 1), ('C', 7)]
 }
-copper['food'] = 'hay'
-copper['species'] = 'Cavia porcellus'
-for i in copper.values():
-    print(i)
+
+def shortest_path(graph, start):
+    distances = {}
+    unvisited = []
+    for node in graph:
+        unvisited.append(node)
+        if node == start:
+            distances[node] = 0
+        else:
+            distances[node] = float('inf')
+    print(f'Unvisited: {unvisited}\nDistances: {distances}')
+
+shortest_path(my_graph, 'A')
